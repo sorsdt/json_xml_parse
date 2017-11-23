@@ -3,16 +3,20 @@ package sors;
 import java.math.BigDecimal;
 
 public class Currency {
-    String txt;
+    String name;
     BigDecimal rate;
-    String cc;
 
-    public String getTxt() {
-        return txt;
+    public Currency(String name, BigDecimal rate) {
+        this.name = name;
+        this.rate = rate;
     }
 
-    public void setTxt(String txt) {
-        this.txt = txt;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public BigDecimal getRate() {
@@ -23,14 +27,6 @@ public class Currency {
         this.rate = rate;
     }
 
-    public String getCc() {
-        return cc;
-    }
-
-    public void setCc(String cc) {
-        this.cc = cc;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -38,16 +34,22 @@ public class Currency {
 
         Currency currency = (Currency) o;
 
-        if (txt != null ? !txt.equals(currency.txt) : currency.txt != null) return false;
-        if (rate != null ? !rate.equals(currency.rate) : currency.rate != null) return false;
-        return cc != null ? cc.equals(currency.cc) : currency.cc == null;
+        if (!name.equals(currency.name)) return false;
+        return rate.equals(currency.rate);
     }
 
     @Override
     public int hashCode() {
-        int result = txt != null ? txt.hashCode() : 0;
-        result = 31 * result + (rate != null ? rate.hashCode() : 0);
-        result = 31 * result + (cc != null ? cc.hashCode() : 0);
+        int result = name.hashCode();
+        result = 31 * result + rate.hashCode();
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Currency{" +
+                "name='" + name + '\'' +
+                ", rate=" + rate +
+                '}';
     }
 }
