@@ -3,20 +3,15 @@ package sors;
 import java.math.BigDecimal;
 
 public class Currency {
-    String name;
+    String txt;
     BigDecimal rate;
 
-    public Currency(String name, BigDecimal rate) {
-        this.name = name;
-        this.rate = rate;
+    public String getTxt() {
+        return txt;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setTxt(String txt) {
+        this.txt = txt;
     }
 
     public BigDecimal getRate() {
@@ -27,6 +22,11 @@ public class Currency {
         this.rate = rate;
     }
 
+    public Currency(String txt, BigDecimal rate) {
+        this.txt = txt;
+        this.rate = rate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -34,21 +34,21 @@ public class Currency {
 
         Currency currency = (Currency) o;
 
-        if (!name.equals(currency.name)) return false;
+        if (!txt.equals(currency.txt)) return false;
         return rate.equals(currency.rate);
     }
 
     @Override
     public int hashCode() {
-        int result = name.hashCode();
+        int result = txt.hashCode();
         result = 31 * result + rate.hashCode();
         return result;
     }
 
     @Override
     public String toString() {
-        return "Currency{" +
-                "name='" + name + '\'' +
+        return "{" +
+                "txt='" + txt + '\'' +
                 ", rate=" + rate +
                 '}';
     }
