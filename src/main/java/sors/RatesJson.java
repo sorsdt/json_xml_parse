@@ -30,19 +30,8 @@ public class RatesJson implements Rates {
         Currency[] currencies = gson.fromJson(jsonString, Currency[].class);
         List<Currency> currencyList = new ArrayList<>();
         for (Currency currency : currencies) {
-            switch (currency.getTxt()) {
-                case "Долар США": {
-                    currencyList.add(currency);
-                    break;
-                }
-                case "Російський рубль": {
-                    currencyList.add(currency);
-                    break;
-                }
-                case "Євро": {
-                    currencyList.add(currency);
-                    break;
-                }
+            if (isOurCurrency(currency.getTxt())) {
+                currencyList.add(currency);
             }
         }
         return currencyList;
